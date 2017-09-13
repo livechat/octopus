@@ -80,6 +80,11 @@ We recommend using [Netlify](https://www.netlify.com/).
 
 It will automatically deploy your forked Octopus GitHub repo to production after each commit. It will also prepare a ready-to-use URL that all your users can access immediately. Later on, you can set up a custom domain to make it look more professional.
 
+Note: when deploying Octopus via Netlify, fill in the following details in the setup wizard:
+
+> Build command: `npm run build`
+> Publish directory: `build`
+
 ## Security
 By default, any user can view and edit your wiki page. Probably this is not what you expect!
 
