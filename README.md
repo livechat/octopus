@@ -82,7 +82,7 @@ It will automatically deploy your forked Octopus GitHub repo to production after
 
 Note: when deploying Octopus via Netlify, fill in the following details in the setup wizard:
 
-> Build command: `npm run build`
+> Build command: `npm run build`  
 > Publish directory: `build`
 
 ## Security
