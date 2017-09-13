@@ -1,0 +1,15 @@
+{
+  "short_name": "Octopus",
+  "name": "Internal knowledge base",
+  "icons": [
+    {
+      "src": "./static/octopus.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#ffeb3b",
+  "background_color": "#ffffff"
+}

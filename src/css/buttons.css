@@ -1,0 +1,18 @@
+button {
+  border: 0;
+  padding: 10px 20px;
+  background: #4db6f3;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 1px 1px #ddd;
+  cursor: pointer;
+}
+button:hover {
+  opacity: .8;
+}
+button[disabled],
+button[disabled]:hover {
+  opacity: .4;
+  cursor: default;
+}

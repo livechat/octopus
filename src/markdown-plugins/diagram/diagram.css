@@ -1,0 +1,22 @@
+.markdown-diagram text {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+.markdown-diagram .node a text:nth-child(3),
+.markdown-diagram .node a text:nth-child(4),
+.markdown-diagram .node a text:nth-child(5),
+.markdown-diagram .node a text:nth-child(6),
+.markdown-diagram .node a text:nth-child(7),
+.markdown-diagram .node a text:nth-child(8),
+.markdown-diagram .node a text:nth-child(9),
+.markdown-diagram .node a text:nth-child(10) {
+  opacity: .5;
+}
+
+.markdown-diagram .edge text {
+  font-size: 8px;
+}
+.markdown-diagram a text {
+  text-decoration: underline;
+}

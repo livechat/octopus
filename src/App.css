@@ -1,0 +1,168 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+#root {
+  height: 100%;
+  overflow: auto;
+}
+.app-error,
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  line-height: 1.5;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+a {
+  color: #006ccf;
+}
+a:hover {
+  color: #69b6fd;
+}
+
+.app__wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+}
+.app__menu {
+  position: relative;
+  vertical-align: top;
+  width: 250px;
+  padding: 20px;
+  font-size: 12px;
+  line-height: 1.4;
+  border-right: 1px solid #e6d02e;
+  background: #ffeb3b;
+  max-height: 100vh;
+  overflow: auto;
+  flex-shrink: 0;
+  transition: all 100ms;
+}
+.app__menu__options {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.app__menu__options,
+.app__menu .app__menu__options a {
+  color: #b3ab64;
+}
+
+.app__wrapper--edit-mode .app__menu {
+  margin-left: -230px;
+}
+.app__menu a,
+.app__menu__container > ul > li > ul {
+  color: #d34352;
+}
+.app__menu__container > ul {
+  font-size: 16px;
+  line-height: 1.2;
+}
+.app__menu__container > ul > li > ul {
+  margin: 10px 0 25px 0;
+  font-size: 14px;
+}
+.app__menu__container > ul > li > ul > li {
+  margin-bottom: .8em;
+}
+.app__menu__container > ul > li > ul > li > a.active {
+  font-weight: bold;
+}
+.app__menu__container > ul > li > ul > li > ul {
+  margin: 5px 0 0 5px;
+  font-size: 12px;
+  color: #b1a538;
+}
+.app__menu__container > ul > li > ul > li > ul > li {
+  padding: 2px 0;
+}
+.app__menu__container > ul > li > ul > li > ul > li.status {
+  position: relative;
+}
+.app__menu__container > ul > li > ul > li > ul > li.status:after {
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 6px;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.app__menu__container > ul > li > ul > li > ul > li a {
+  color: #b1a538;
+}
+.app__menu__container > ul > li > ul > li > ul > li a.active {
+  font-weight: bold;
+  color: #000;
+}
+
+.app__logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.app__logo p {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+.app__logo img {
+  vertical-align: middle;
+}
+.app__logo .octopus {
+  height: 50px;
+}
+
+.app__content {
+  overflow: auto;
+  width: 100%;
+  max-height: 100vh;
+  flex-grow: 1;
+}
+
+.user-avatar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
