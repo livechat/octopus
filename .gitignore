@@ -2,6 +2,7 @@
 
 # config
 /config/config.php
+src/config/config.js
 
 # dependencies
 /node_modules
