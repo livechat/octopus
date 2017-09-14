@@ -61,7 +61,7 @@ Active in the last 5 minutes:
  Who | Where | Last Active
 :--: | :---- | :----------
 ${this.state.users.map((user) => {
-  return [`<img src=${user.photoUrl} alt=${user.email} title=${user.email} class="user-avatar" />`, `${window.location.origin}${user.path}`, `${distanceInWordsToNow(user.lastActive)} ago`].join('|');
+  return [`<img src="${user.photoUrl}" alt="${user.email}" title="${user.email}" class="user-avatar" />`, `${window.location.origin}${user.path}`, `${distanceInWordsToNow(user.lastActive)} ago`].join('|');
 }).join("\n")}
 `}
 </Markdown>
