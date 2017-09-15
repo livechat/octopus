@@ -1,3 +1,9 @@
+.markdown-diagram {
+  margin-bottom: 20px;
+}
+.markdown-diagram svg {
+  display: block;
+}
 .markdown-diagram text {
   font-family: sans-serif;
   font-size: 10px;

@@ -356,6 +356,10 @@
   font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
+.content--markdown svg {
+  margin-bottom: 10px;
+}
+
 .content--markdown .octicon {
   vertical-align: text-bottom;
 }
