@@ -92,6 +92,23 @@ a:hover {
 .app__wrapper--edit-mode .app__menu {
   margin-left: -230px;
 }
+.app__menu--made-by {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #e6d02e;
+}
+.app__menu--made-by p {
+  margin: .5em 0;
+}
+.app__menu--made-by,
+.app__menu .app__menu--made-by a {
+  color: #b1a538;
+}
+.app__menu--made-by img {
+  height: 26px;
+  display: inline-block;
+  vertical-align: middle;
+}
 .app__menu a,
 .app__menu__container > ul > li > ul {
   color: #d34352;

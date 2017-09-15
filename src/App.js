@@ -178,7 +178,7 @@ class App extends Component {
           }
           {!this.state.authErrorMessage &&
             <div>
-            <p>Please go to <a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer" >Firebase Console</a> &gt; Authentication &gt; Sign-in method and make sure:</p>
+            <p>Please go to <a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer">Firebase Console</a> &gt; Authentication &gt; Sign-in method and make sure:</p>
             <ul>
             <li>at least one sign-in method is configured,</li>
             <li><strong>{window.location.origin}</strong> is added to the list of authorized domains.</li>
@@ -234,6 +234,11 @@ class App extends Component {
             {this.state.menu}
             </Markdown>
           }
+
+          <div className="app__menu--made-by">
+            <p>Made by <a href="https://www.livechatinc.com/?utm_source=octopus&utm_medium=menu" target="_blank" rel="noopener noreferrer"><img className="octopus" src="/static/livechat.png" alt="" /></a></p>
+            <p>See <a href="https://github.com/livechat/octopus" target="_blank" rel="noopener noreferrer">Octopus on GitHub</a></p>
+          </div>
         </div>
 
         <div className="app__content">
