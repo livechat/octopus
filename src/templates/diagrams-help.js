@@ -1,13 +1,16 @@
 export default `# Diagrams help
 Octopus supports powerful **diagrams** feature. It lets you embed advanced graphs to your content without any external software.
 
-To embed a diagram, include the diagram definition between \`[diagram]\` and \`[/diagram]\` tags.
+Two diagramming tools are supported:
+* [Graphviz](http://www.graphviz.org)
+* [flowchart.js](http://flowchart.js.org)
+
+## Graphviz
+To embed a Graphviz diagram, include the diagram definition between \`[diagram]\` and \`[/diagram]\` tags.
 
 The diagrams are written in DOT language. To learn more, read the [DOT language documentation](http://www.graphviz.org/content/dot-language) or browse [Diagrams Gallery](http://www.graphviz.org/Gallery.php).
 
 To learn how to build advanced graphs, read the [full article on DOT](http://www.graphviz.org/pdf/dotguide.pdf) (in PDF format).
-
-## Examples
 
 ### Basic graph
 Code
@@ -134,7 +137,47 @@ digraph G {
 }
 [/diagram]
 
-## More examples
-
+### More examples
 Find more examples in the [Diagrams Gallery](http://www.graphviz.org/Gallery.php).
+
+## flowchart.js
+To embed a flowchart.js diagram, include the diagram definition between \`[flowchart]\` and \`[/flowchart]\` tags.
+
+Read more on the [flowchart.js project page](http://flowchart.js.org).
+
+### Example
+
+Code
+
+\`\`\`
+[flowchart]
+st=>start
+e=>end
+op1=>operation: My operation
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes
+or No?
+io=>inputoutput: catch something...
+
+st->op1->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op1
+[/flowchart]
+\`\`\`
+
+Result
+
+[flowchart]
+st=>start
+e=>end
+op1=>operation: My operation
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes
+or No?
+io=>inputoutput: catch something...
+
+st->op1->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op1
+[/flowchart]
 `;

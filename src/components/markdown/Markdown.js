@@ -3,6 +3,7 @@ import Remarkable from 'remarkable';
 import hljs from 'highlight.js';
 
 import diagramPlugin from '../../markdown-plugins/diagram/diagram';
+import flowchartPlugin from '../../markdown-plugins/flowchart/flowchart';
 import googleStorageImagesPlugin from '../../markdown-plugins/google-storage-images/google-storage-images';
 import reactRouterLinksPlugin from '../../markdown-plugins/react-router-links/react-router-links';
 
@@ -34,6 +35,7 @@ export default class Markdown extends Component {
     });
 
     this.md.use(diagramPlugin);
+    this.md.use(flowchartPlugin);
     this.md.use(googleStorageImagesPlugin);
     this.md.use(reactRouterLinksPlugin);
   }

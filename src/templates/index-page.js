@@ -20,6 +20,22 @@ digraph {
 }
 [/diagram]
 
+Octopus supports flowcharts as well:
+
+[flowchart]
+st=>start
+e=>end
+op1=>operation: My operation
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes
+or No?
+io=>inputoutput: catch something...
+
+st->op1->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op1
+[/flowchart]
+
 To read more about using diagrams, go to [Diagrams Help](/diagrams-help) page.
 
 Happy knowledge sharing!`;

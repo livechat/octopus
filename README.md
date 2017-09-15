@@ -2,7 +2,7 @@
 
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-**🐙 Octopus** is a server-less, easy-to-setup internal wiki page with built-in Graphviz diagrams support. It uses **Markdown** for writing content and enhances it with [Graphviz](http://graphviz.org) diagrams for easy software documentation.
+**🐙 Octopus** is a server-less, easy-to-setup internal wiki page with built-in software diagrams diagrams support. It uses **Markdown** for writing content and enhances it with [Graphviz](http://graphviz.org) and [flowchart.js](http://flowchart.js.org/) diagrams for easy software documentation.
 
 Here's a default wiki page:
 
@@ -22,7 +22,7 @@ Octopus is a [JAMstack](https://jamstack.org/) app that uses [Google Firebase](h
 #### Features
 * create new wiki pages with Markdown language,
 * edit menu (using Markdown) to easily link to wiki pages,
-* include [Graphviz diagrams](http://www.graphviz.org/Gallery.php) inside your Markdown content,
+* include [Graphviz](http://www.graphviz.org/Gallery.php) and [flowchart.js](http://flowchart.js.org/) diagrams inside your Markdown content,
 * see who is currently reading your wiki articles,
 * adjust your Wiki front-end with React ([create-react-app](https://github.com/facebookincubator/create-react-app)).
 
@@ -84,7 +84,7 @@ It will automatically deploy your forked Octopus GitHub repo to production after
 
 Note: when deploying Octopus via Netlify, fill in the following details in the setup wizard:
 
-> Build command: `npm run build`  
+> Build command: `npm run build`<br />
 > Publish directory: `build`
 
 ## Security
@@ -148,6 +148,7 @@ We wanted it to be easy to contribute for **non-technical people** and include e
 ## Built with
 * React via [create-react-app](https://github.com/facebookincubator/create-react-app).
 * [viz.js](https://github.com/mdaines/viz.js/)
+* [flowchart.js](https://github.com/adrai/flowchart.js)
 * [Firebase](https://firebase.google.com/)
 
 ## Changelog
