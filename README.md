@@ -45,6 +45,8 @@ Octopus is a [JAMstack](https://jamstack.org/) app that uses [Google Firebase](h
 cp src/config/config.template.js src/config/config.js
 ```
 
+> Note: you can safely commit `src/config/config.js` file to a repository. This file does not store sensitive credentials - all config variables will be publicly available in the `.js` file anyway.
+
 3. Create a new Firebase project here: https://firebase.google.com/
 4. Pick "Add Firebase to your web app" and copy the config to `src/config/config.js` created in step 2.
 
