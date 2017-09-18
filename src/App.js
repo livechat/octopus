@@ -42,6 +42,10 @@ class App extends Component {
       messagingSenderId: Config.messageingSenderId
     };
 
+    // allow markdown plugins refer to "firebase" global object
+    // when injecting custom inline HTML
+    window['firebase'] = firebase;
+
     firebase.initializeApp(config);
     try {
       firebase.auth().getRedirectResult().then((result) => {
