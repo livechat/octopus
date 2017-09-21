@@ -57,7 +57,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && cp _redirects build/_redirects",
+    "build": "node scripts/build.js && cp _redirects build/_redirects && cp .htaccess build/.htaccess",
     "deploy": "npm run build",
     "test": "node scripts/test.js --env=jsdom"
   },
