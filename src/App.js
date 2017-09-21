@@ -4,7 +4,7 @@ import './App.css';
 
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import { Switch, Route, NavLink } from 'react-router-dom'
+import { Switch, Route, NavLink, Prompt } from 'react-router-dom'
 
 import * as firebase from 'firebase';
 import { Firebase, OnlineTracker } from './utils';
@@ -23,14 +23,18 @@ import {
 
 class App extends Component {
   stopRedirection = false;
+  onBeforeUnloadText = "You have unsaved changes.\n\nAre you sure you want to close this page?";
 
   state = {
     loggedIn: false,
     accessDenied: false,
+    hasUnsavedChanges: false,
     menu: null
   };
 
   componentDidMount() {
+    window.addEventListener('beforeunload', this.onBeforeUnload);
+
     this.bindGlobalNavigationHelper();
 
     const config = {
@@ -103,6 +107,17 @@ class App extends Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.onBeforeUnload);
+  }
+
+  onBeforeUnload = (e) => {
+    if (this.state.hasUnsavedChanges) {
+      e.preventDefault();
+      return e.returnValue = this.onBeforeUnloadText;
+    }
+  }
+
   getAuthProvider() {
     switch (Config.authProvider) {
       case 'github':
@@ -163,6 +178,12 @@ class App extends Component {
   editModeChanged = (value) => {
     this.setState({
       editMode: value
+    });
+  }
+
+  onUnsavedChanges = (value) => {
+    this.setState({
+      hasUnsavedChanges: value
     });
   }
 
@@ -258,12 +279,21 @@ class App extends Component {
   renderComponentForRoute = () => {
     return (route) => {
       const path = route.location.pathname.substring(1);
-      return <PageContainer
-        onEditModeChange={this.editModeChanged}
-        onAccessDenied={this.onAccessDenied}
-        path={path}
-        key={path}
-      />;
+
+      return <div>
+        <Prompt
+          when={this.state.hasUnsavedChanges}
+          message={location => this.onBeforeUnloadText}
+        />
+
+        <PageContainer
+          onEditModeChange={this.editModeChanged}
+          onUnsavedChanges={this.onUnsavedChanges}
+          onAccessDenied={this.onAccessDenied}
+          path={path}
+          key={path}
+        />
+      </div>;
     }
   }
 }
