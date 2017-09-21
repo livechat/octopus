@@ -103,6 +103,10 @@ export default class Page extends Component {
   saveChanges = (e) => {
     this.setEditMode(false);
 
+    this.setState({
+      hasUnsavedChanges: false
+    });
+
     if (this.props.onChangesSaved) {
       this.props.onChangesSaved(this.state.body);
     }
