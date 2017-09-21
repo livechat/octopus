@@ -61,7 +61,11 @@ Active in the last 5 minutes:
  Who | Where | Last Active
 :--: | :---- | :----------
 ${this.state.users.map((user) => {
+<<<<<<< HEAD
   return [`<img src="${user.photoUrl}" alt="${user.email}" title="${user.email}" class="user-avatar" /> ${user.email}`, `${window.location.origin}${user.path}`, `${distanceInWordsToNow(user.lastActive)} ago`].join('|');
+=======
+  return [`<img src="${user.photoUrl}" alt="${user.email}" title="${user.email}" class="user-avatar" />`, `${window.location.origin}${user.path}`, `${distanceInWordsToNow(user.lastActive)} ago`].join('|');
+>>>>>>> parent of 81bc2d9... show email for online people
 }).join("\n")}
 `}
 </Markdown>
