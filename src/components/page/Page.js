@@ -20,6 +20,7 @@ export default class Page extends Component {
   state = {
     body: null,
     originalBody: null,
+    hasUnsavedChanges: null,
     editMode: false
   };
 
@@ -27,7 +28,8 @@ export default class Page extends Component {
     this.setEditMode(false);
     this.setState({
       body: this.props.body,
-      originalBody: this.props.body
+      originalBody: this.props.body,
+      hasUnsavedChanges: false
     });
   }
 
@@ -37,6 +39,12 @@ export default class Page extends Component {
         body: this.props.body,
         originalBody: this.props.body
       });
+    }
+
+    if (prevState.hasUnsavedChanges !== this.state.hasUnsavedChanges) {
+      if (this.props.onUnsavedChanges) {
+        this.props.onUnsavedChanges(this.state.hasUnsavedChanges);
+      }
     }
   }
 
@@ -63,8 +71,11 @@ export default class Page extends Component {
   }
 
   throttledBodyChange = throttle((e) => {
+    const bodyValue = e.target.value;
+
     this.setState({
-      body: e.target.value
+      body: bodyValue,
+      hasUnsavedChanges: bodyValue !== this.state.originalBody
     });
   }, 1000);
 
@@ -101,7 +112,8 @@ export default class Page extends Component {
     e.preventDefault();
 
     this.setState({
-      body: this.state.originalBody
+      body: this.state.originalBody,
+      hasUnsavedChanges: false
     });
     this.setEditMode(false);
   }
@@ -166,6 +178,7 @@ export default class Page extends Component {
 Page.propTypes = {
   body: PropTypes.string.isRequired,
   onEditModeChange: PropTypes.func,
+  onUnsavedChanges: PropTypes.func,
   onChangesSaved: PropTypes.func,
   canEdit: PropTypes.bool,
   currentlyViewing: PropTypes.array,

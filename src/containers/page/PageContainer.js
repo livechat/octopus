@@ -145,6 +145,7 @@ export default class PageContainer extends Component {
         body={this.state.body}
         onEditModeChange={this.props.onEditModeChange}
         onChangesSaved={this.onChangesSaved}
+        onUnsavedChanges={this.props.onUnsavedChanges}
       />;
     }
   }
@@ -152,6 +153,7 @@ export default class PageContainer extends Component {
 
 PageContainer.propTypes = {
   onEditModeChange: PropTypes.func.isRequired,
+  onUnsavedChanges: PropTypes.func.isRequired,
   onAccessDenied: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired
 };
