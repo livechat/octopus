@@ -61,7 +61,7 @@ Active in the last 5 minutes:
  Who | Where | Last Active
 :--: | :---- | :----------
 ${this.state.users.map((user) => {
-  return [`<a href="#" class="tooltip-right tooltip-200" data-tooltip="${user.email}"><img src="${user.photoUrl}" alt="${user.email}" class="user-avatar" /></a>`, `${window.location.origin}${user.path}`, `${distanceInWordsToNow(user.lastActive)} ago`].join('|');
+  return [`<span class="tooltip-right tooltip-200" data-tooltip="${user.email}"><img src="${user.photoUrl}" alt="${user.email}" class="user-avatar" /></span>`, `${window.location.origin}${user.path}`, `${distanceInWordsToNow(user.lastActive)} ago`].join('|');
 }).join("\n")}
 `}
 </Markdown>
