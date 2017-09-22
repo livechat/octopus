@@ -33,12 +33,14 @@ export default (md, options) => {
   md.renderer.rules.flowchart = (tokens, idx) => {
     const content = tokens[idx].content;
     const id = `flowchart-${Math.random()}`;
+    let error = '';
     let parsedFlowchart = '';
 
     try {
       parsedFlowchart = flowchart.parse(content);
       cachedFlowchart[idx] = parsedFlowchart;
     } catch (e) {
+      error = `<p class="syntax-error">⚠️ Syntax error - diagram not rendered</p>`;
       parsedFlowchart = cachedFlowchart[idx] || '';
     }
 
@@ -50,6 +52,6 @@ export default (md, options) => {
       } catch (e) {}
     }, 0);
 
-    return `<div id="${id}"></div>`;
+    return `<div class="markdown-diagram" id="${id}">${error}</div>`;
   };
 };
