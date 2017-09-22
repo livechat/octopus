@@ -33,22 +33,23 @@ export default (md, options) => {
 
   md.renderer.rules.diagram = (tokens, idx) => {
     const content = tokens[idx].content;
-    let googleChartsLink = '';
-
     let html = '';
+    
     try {
-      html = Viz(content);
-      html = html.replace(/<a /g, '<a onclick="window.navigateTo(event, event.currentTarget.getAttribute(\'xlink:href\'))"');
-      cachedHtml[idx] = html;
-
-      googleChartsLink = `https://chart.googleapis.com/chart?chl=${encodeURIComponent(content)}&cht=gv`;
+      let vizHtml = Viz(content);
+      vizHtml = vizHtml.replace(/<a /g, '<a onclick="window.navigateTo(event, event.currentTarget.getAttribute(\'xlink:href\'))"');
+      let googleChartsLink = `https://chart.googleapis.com/chart?chl=${encodeURIComponent(content)}&cht=gv`;
+      html = `${vizHtml}
+      <a href=${googleChartsLink} target="_blank">Open as .png</a>`;
+      
+      cachedHtml[idx] = vizHtml;
     } catch (e) {
-      html = cachedHtml[idx];
+      html = `<p>Couldn\'t render graph</p>
+      ${cachedHtml[idx]}`;
     }
 
     return `<div class="markdown-diagram">
     ${html}
-    <a href=${googleChartsLink} target="_blank">Open as .png</a>
     </div>`;
   };
 };
