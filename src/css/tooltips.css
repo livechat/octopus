@@ -82,6 +82,12 @@
     width: 300px;
 }
 
+/* auto width */
+.tooltip-auto:after,
+.tooltip-auto[data-tooltip]:after {
+    width: auto;
+}
+
 /* Directions */
 
 /* Top (default) */
