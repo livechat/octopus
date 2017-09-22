@@ -1,6 +1,9 @@
 .markdown-diagram {
   margin-bottom: 20px;
 }
+.markdown-diagram .syntax-error {
+  color: red;
+}
 .markdown-diagram svg {
   display: block;
 }
