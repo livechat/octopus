@@ -270,7 +270,7 @@ class App extends Component {
             <NavLink to="/"><img className="octopus" src="/static/octopus.png" alt="" /></NavLink>
           </div>
       <div className="app__menu">
-        <input type="text" onChange={this.filter} />
+        <input type="text" onChange={this.filter} autoFocus />
       </div>
           {!this.state.menu &&
             <div className="spinner-container">
