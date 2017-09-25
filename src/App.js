@@ -29,7 +29,8 @@ class App extends Component {
     loggedIn: false,
     accessDenied: false,
     hasUnsavedChanges: false,
-    menu: null
+    menu: null,
+    initialMenu: null
   };
 
   componentDidMount() {
@@ -75,7 +76,8 @@ class App extends Component {
             const menuContents = snapshot.val();
             if (menuContents) {
               this.setState({
-                menu: menuContents.body
+                menu: menuContents.body,
+                initialMenu: menuContents.body
               });
             } else {
               this.createExamplePages();
@@ -193,6 +195,26 @@ class App extends Component {
     });
   }
 
+  filter = (e) => {
+    if (e.target.value === "") {
+      this.setState({
+          menu: this.state.initialMenu,
+        })
+  }else {
+    // TODO: PARSE MARKDOWN INTO ADT (TREE), AND REMOVE EMPTY LEAFS
+    var updated = this.state.initialMenu.split("\n").filter((line)=>{
+      if (/\[.*\]/.test(line) === false) {
+        return true
+      }
+      return line.indexOf(e.target.value) > -1;
+    }).join("\n")
+
+    this.setState({
+      menu: updated,
+    })
+    }
+  }
+
   render() {
     if (this.state.authError) {
       return (
@@ -247,7 +269,9 @@ class App extends Component {
           <div className="app__logo">
             <NavLink to="/"><img className="octopus" src="/static/octopus.png" alt="" /></NavLink>
           </div>
-
+      <div className="app__menu">
+        <input type="text" onChange={this.filter} autoFocus />
+      </div>
           {!this.state.menu &&
             <div className="spinner-container">
               <div className="spinner"></div>
