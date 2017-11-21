@@ -1,5 +1,6 @@
 import './css/reset.css';
 import './css/buttons.css';
+import './css/tooltips.css';
 import './App.css';
 
 import React, { Component } from 'react';
