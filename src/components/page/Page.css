@@ -22,11 +22,10 @@
   font-size: 14px;
   color: #999;
   line-height: 1.5;
-}
-.content__meta__currently-viewing {
+}.content__meta__currently-viewing {
   margin-top: 5px;
 }
-.content__meta__currently-viewing .user-avatar {
+.content__meta__currently-viewing span {
   margin-left: 5px;
 }
 
