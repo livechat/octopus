@@ -4,6 +4,7 @@ import './css/tooltips.css';
 import './App.css';
 
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router';
 import { Switch, Route, NavLink, Prompt } from 'react-router-dom'
 
