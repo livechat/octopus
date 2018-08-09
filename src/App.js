@@ -174,6 +174,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    this.followDetailsInMenu();
     if (this.props.location.pathname !== prevProps.location.pathname) {
       OnlineTracker.track(this.props.location.pathname);
     }
@@ -280,7 +281,7 @@ class App extends Component {
           {this.state.menu &&
             <div>
               <MenuSearch menu={this.state.menu}/>
-              <Markdown className="app__menu__container">
+              <Markdown className="app__menu__container" ref="menu">
                 {this.state.menu}
               </Markdown>
             </div>
