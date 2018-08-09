@@ -38,6 +38,7 @@ class App extends Component {
     window.addEventListener('beforeunload', this.onBeforeUnload);
 
     this.bindGlobalNavigationHelper();
+    this.followDetailsInMenu();
 
     const config = {
       apiKey: Config.apiKey,
@@ -194,6 +195,25 @@ class App extends Component {
       accessDenied: true
     });
   }
+
+  openParentDetailsNode = (node) => {
+    if(node){
+      if(node.nodeName.toLowerCase() !== 'details')
+        this.openParentDetailsNode(node.parentNode);
+      else
+        node.setAttribute('open', 'true');
+    }
+  };
+
+  followDetailsInMenu = () => {
+    const menuDOMNode = ReactDOM.findDOMNode(this.refs.menu);
+    if(menuDOMNode) {
+      const actives = menuDOMNode.getElementsByClassName('active');
+      for (let i = 0; i < actives.length; i++) {
+        this.openParentDetailsNode(actives[i]);
+      }
+    }
+  };
 
   render() {
     if (this.state.authError) {
