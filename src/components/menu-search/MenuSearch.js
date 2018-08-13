@@ -24,29 +24,28 @@ export default class MenuSearch extends Component {
         });
     }
 
-    static createRegex(query, type) {
-        if(type === 'link') {
-            return new RegExp(
-                '\\[.*\\]\\(.*(' + query + ').*\\)',
-                "gi"
-            );
-        } else {
-            return new RegExp(
-                '\\[.*(' + query + ').*\\]\\(.*\\)',
-                "gi"
-            );
-        }
+    static createLinkRegex(query) {
+        return new RegExp(
+            '\\[.*\\]\\(.*(' + query + ').*\\)',
+            "gi"
+        );
+    }
+    static createTitleRegex(query) {
+        return new RegExp(
+            '\\[.*(' + query + ').*\\]\\(.*\\)',
+            "gi"
+        );
     }
 
-    static escapeRegEx(s) {
+    static escapeRegex(s) {
         return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
     }
 
     searchInMenu() {
         const menu = this.props.menu;
 
-        const titleArray = menu.match(MenuSearch.createRegex(this.state.titleQuery));
-        const linkArray = menu.match(MenuSearch.createRegex(this.state.linkQuery, 'link'));
+        const titleArray = menu.match(MenuSearch.createTitleRegex(this.state.titleQuery));
+        const linkArray = menu.match(MenuSearch.createLinkRegex(this.state.linkQuery));
 
         const titleRegex = /\[(.*?)\]/;
         const linkRegex = /\]\((.*?)\)/;
@@ -101,7 +100,6 @@ export default class MenuSearch extends Component {
                 this.searchInMenu();
             else
                 this.cleanResults();
-
         });
 
     };
