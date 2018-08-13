@@ -101,7 +101,6 @@ export default class MenuSearch extends Component {
             else
                 this.cleanResults();
         });
-
     };
 
     preventBlur = (e) => {
