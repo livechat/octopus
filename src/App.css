@@ -110,35 +110,53 @@ a:hover {
   vertical-align: middle;
 }
 .app__menu a,
-.app__menu__container > ul > li > ul {
+.app__menu__container > ul > li > ul, .app__menu__container > ul > li > details > ul {
   color: #d34352;
 }
 .app__menu__container > ul {
   font-size: 16px;
   line-height: 1.2;
 }
-.app__menu__container > ul > li > ul {
-  margin: 10px 0 25px 0;
+
+.app__menu__container > ul > li > details {
+  margin-bottom: 14px;
+}
+
+.app__menu__container > ul > li > details summary{
+  cursor: pointer;
+}
+
+.app__menu__container > ul > li > details summary:focus {
+  outline: none;
+}
+
+.app__menu__container > ul > li > ul, .app__menu__container > ul > li > details > ul {
+  margin: 10px 0 24px 0;
   font-size: 14px;
 }
-.app__menu__container > ul > li > ul > li {
+
+.app__menu__container > ul > li > details > ul {
+  margin-bottom: 10px;
+}
+
+.app__menu__container > ul > li > ul > li, .app__menu__container > ul > li > details > ul > li {
   margin-bottom: .8em;
 }
-.app__menu__container > ul > li > ul > li > a.active {
+.app__menu__container a.active {
   font-weight: bold;
 }
-.app__menu__container > ul > li > ul > li > ul {
+.app__menu__container > ul > li > ul > li > ul, .app__menu__container > ul > li > details > ul > li > ul {
   margin: 5px 0 0 5px;
   font-size: 12px;
   color: #b1a538;
 }
-.app__menu__container > ul > li > ul > li > ul > li {
+.app__menu__container > ul > li > ul > li > ul > li, .app__menu__container > ul > li > details > ul > li > ul > li {
   padding: 2px 0;
 }
-.app__menu__container > ul > li > ul > li > ul > li.status {
+.app__menu__container > ul > li > ul > li > ul > li.status, .app__menu__container > ul > li > details > ul > li > ul > li.status {
   position: relative;
 }
-.app__menu__container > ul > li > ul > li > ul > li.status:after {
+.app__menu__container > ul > li > ul > li > ul > li.status:after, .app__menu__container > ul > li > details > ul > li > ul > li.status:after {
   font-size: 10px;
   font-weight: bold;
   margin-left: 6px;
@@ -146,10 +164,10 @@ a:hover {
   text-transform: uppercase;
 }
 
-.app__menu__container > ul > li > ul > li > ul > li a {
+.app__menu__container > ul > li > ul > li > ul > li a, .app__menu__container > ul > li > ul > li > ul > li a {
   color: #b1a538;
 }
-.app__menu__container > ul > li > ul > li > ul > li a.active {
+.app__menu__container > ul > li > ul > li > ul > li a.active, .app__menu__container > ul > li > ul > li > ul > li a.active {
   font-weight: bold;
   color: #000;
 }

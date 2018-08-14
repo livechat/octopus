@@ -4,6 +4,7 @@ import './css/tooltips.css';
 import './App.css';
 
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router';
 import { Switch, Route, NavLink, Prompt } from 'react-router-dom'
 
@@ -13,6 +14,7 @@ import { Config } from './config';
 import { PageContainer } from './containers/page';
 import { Markdown } from './components/markdown';
 import { PeopleOnline } from './components/people-online';
+import { MenuSearch } from './components/menu-search';
 
 import {
   menuTemplate,
@@ -37,6 +39,7 @@ class App extends Component {
     window.addEventListener('beforeunload', this.onBeforeUnload);
 
     this.bindGlobalNavigationHelper();
+    this.followDetailsInMenu();
 
     const config = {
       apiKey: Config.apiKey,
@@ -171,6 +174,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    this.followDetailsInMenu();
     if (this.props.location.pathname !== prevProps.location.pathname) {
       OnlineTracker.track(this.props.location.pathname);
     }
@@ -193,6 +197,25 @@ class App extends Component {
       accessDenied: true
     });
   }
+
+  openParentDetailsNode = (node) => {
+    if(node){
+      if(node.nodeName.toLowerCase() !== 'details')
+        this.openParentDetailsNode(node.parentNode);
+      else
+        node.setAttribute('open', 'true');
+    }
+  };
+
+  followDetailsInMenu = () => {
+    const menuDOMNode = ReactDOM.findDOMNode(this.refs.menu);
+    if(menuDOMNode) {
+      const actives = menuDOMNode.getElementsByClassName('active');
+      for (let i = 0; i < actives.length; i++) {
+        this.openParentDetailsNode(actives[i]);
+      }
+    }
+  };
 
   render() {
     if (this.state.authError) {
@@ -256,9 +279,12 @@ class App extends Component {
           }
 
           {this.state.menu &&
-            <Markdown className="app__menu__container">
-            {this.state.menu}
-            </Markdown>
+            <div>
+              <MenuSearch menu={this.state.menu}/>
+              <Markdown className="app__menu__container" ref="menu">
+                {this.state.menu}
+              </Markdown>
+            </div>
           }
 
           <div className="app__menu--made-by">
