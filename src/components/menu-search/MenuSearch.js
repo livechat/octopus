@@ -65,7 +65,7 @@ export default class MenuSearch extends Component {
         if(resultsArray.length > 0) {
             resultsArray.forEach(function (value) {
                 blockRegex = new RegExp(
-                    '<details><summary>(.*?)<\\/summary>[^<]*?' + MenuSearch.escapeRegEx(value),
+                    '<details><summary>(.*?)<\\/summary>[^<]*?' + MenuSearch.escapeRegex(value),
                     ''
                 );
 
@@ -123,6 +123,7 @@ export default class MenuSearch extends Component {
         return (
             <form id="menuSearch"
                   onFocus={this.handleInputChange}
+                  onSubmit={(event) => event.preventDefault()}
             >
                 <input
                     placeholder="Search in menu..."
