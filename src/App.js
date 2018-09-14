@@ -306,6 +306,7 @@ class App extends Component {
   renderComponentForRoute = () => {
     return (route) => {
       const path = route.location.pathname.substring(1);
+      const hash = route.location.hash;
 
       return <div>
         <Prompt
@@ -319,6 +320,7 @@ class App extends Component {
           onAccessDenied={this.onAccessDenied}
           path={path}
           key={path}
+          hash={hash}
         />
       </div>;
     }
