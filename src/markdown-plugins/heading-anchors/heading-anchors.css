@@ -1,0 +1,25 @@
+.headingAnchor {
+    display: none;
+    float: left;
+    padding-right: 4px;
+    margin-left: -20px;
+    color: #1b1f23;
+    vertical-align: middle;
+}
+
+h1 .headingAnchor {
+    line-height: 1em;
+}
+
+.headingAnchor svg {
+    margin: 0!important;
+}
+
+h1:hover .headingAnchor,
+h2:hover .headingAnchor,
+h3:hover .headingAnchor,
+h4:hover .headingAnchor,
+h5:hover .headingAnchor,
+h6:hover .headingAnchor {
+    display: inline;
+}
