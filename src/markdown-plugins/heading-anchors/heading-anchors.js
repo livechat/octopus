@@ -3,7 +3,7 @@ import './heading-anchors.css';
 const toSlug = input => {
     if (input)
         return input
-            .replace(/\[.+\]\(.+\)/g, '')
+            .replace(/\[(.+)\]\(.+\)/g, '$1')
             .replace(/[^-a-z0-9\s]/gi, '')
             .split(' ')
             .filter((e) => { return e === 0 || e })
