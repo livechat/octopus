@@ -46,6 +46,9 @@ export default class Page extends Component {
         this.props.onUnsavedChanges(this.state.hasUnsavedChanges);
       }
     }
+
+    if (this.props.hash)
+      this.handleHashAnchor();
   }
 
   setEditMode(value) {
@@ -97,6 +100,15 @@ export default class Page extends Component {
 
       // prevent the focus lose
       e.preventDefault();
+    }
+  }
+
+  handleHashAnchor = () => {
+    const hash = this.props.hash;
+    if(hash) {
+      const element = document.getElementById(hash.substr(1));
+      if (element)
+        element.scrollIntoView();
     }
   }
 
@@ -188,4 +200,5 @@ Page.propTypes = {
   currentlyViewing: PropTypes.array,
   lastChangeTimestamp: PropTypes.number,
   lastChangeAutor: PropTypes.string,
+  hash: PropTypes.string
 };

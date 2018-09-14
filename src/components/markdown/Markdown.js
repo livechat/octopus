@@ -6,6 +6,7 @@ import diagramPlugin from '../../markdown-plugins/diagram/diagram';
 import flowchartPlugin from '../../markdown-plugins/flowchart/flowchart';
 import googleStorageImagesPlugin from '../../markdown-plugins/google-storage-images/google-storage-images';
 import reactRouterLinksPlugin from '../../markdown-plugins/react-router-links/react-router-links';
+import headingAnchors from "../../markdown-plugins/heading-anchors/heading-anchors";
 
 import './hljs-github.css';
 
@@ -38,6 +39,7 @@ export default class Markdown extends Component {
     this.md.use(flowchartPlugin);
     this.md.use(googleStorageImagesPlugin);
     this.md.use(reactRouterLinksPlugin);
+    this.md.use(headingAnchors);
   }
 
   render() {
