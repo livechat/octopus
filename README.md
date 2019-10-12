@@ -155,6 +155,12 @@ We wanted it to be easy to contribute for **non-technical people** and include e
 * 15.09.2017 - "Open as .png" option
 * 13.09.2017 - Initial release
 
+## Roadmap
+* simple Q&A (Q&A and suggestions with up-votes, solved mark, answer with existing/new page)
+* history for pages (add history with author for every page and add Last changes page)
+* up votes & down votes for pages
+* report a waste: scale (company, department, team), wasted minutes per day, name, description, up-votes (https://docs.google.com/forms/d/1fsn6dgbh2Gs6kMzXlBN0HN9W3u7xHoR71kppuugTOAY/edit)
+
 ## Authors
 [Bartosz Olchówka](https://twitter.com/bolchowka/) / CTO @ [LiveChat](https://www.livechatinc.com/)
 
