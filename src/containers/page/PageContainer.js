@@ -11,6 +11,7 @@ export default class PageContainer extends Component {
     currentlyViewing: [],
     fetched: false,
     body: '',
+    votes: {},
   };
 
   getCurrentPath() {
@@ -59,6 +60,7 @@ export default class PageContainer extends Component {
           fetched: true,
           e404: false,
           body: data.body,
+          votes: data.votes,
           lastChangeTimestamp: data.lastChangeTimestamp,
           lastChangeAutor: data.lastChangeAutor
         });
@@ -118,6 +120,36 @@ export default class PageContainer extends Component {
     }
   }
 
+  onVote = (voteType) => {
+    let votes = this.state.votes;
+    if(votes && votes[voteType] && votes[voteType][Firebase.getUser().uid]) {
+      firebase.database().ref(`pages/${this.getCurrentPath()}/votes/${voteType}/${Firebase.getUser().uid}`).remove();
+
+      delete votes[voteType][Firebase.getUser().uid];
+
+      this.setState({
+        votes: votes,
+      });
+    } else {
+      if(!votes) {
+        votes = {}
+      }
+      if(!votes[voteType]) {
+        votes[voteType] = {}
+      }
+      votes[voteType][Firebase.getUser().uid] = {
+        timestamp: Utils.getTimestamp(),
+        user: Firebase.getUser().email
+      }
+      firebase.database().ref(`pages/${this.getCurrentPath()}`).update({
+        votes: votes
+      });
+      this.setState({
+        votes: votes,
+      });
+    }
+  }
+
   render() {
     if (!this.state.fetched) {
       if (this.props.spinner === false) {
@@ -143,6 +175,8 @@ export default class PageContainer extends Component {
         lastChangeTimestamp={this.state.lastChangeTimestamp}
         lastChangeAutor={this.state.lastChangeAutor}
         body={this.state.body}
+        votes={this.state.votes}
+        onVote={this.onVote}
         onEditModeChange={this.props.onEditModeChange}
         onChangesSaved={this.onChangesSaved}
         onUnsavedChanges={this.props.onUnsavedChanges}

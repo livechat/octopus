@@ -134,6 +134,18 @@ export default class Page extends Component {
     this.setEditMode(false);
   }
 
+  upVote = (e) => {
+      if (this.props.onVote) {
+          this.props.onVote("upvotes");
+      }
+  }
+
+  hardVote = (e) => {
+      if (this.props.onVote) {
+          this.props.onVote("hard");
+      }
+  }
+
   render() {
     const contentClass = ['content', 'content--page'];
     if (this.state.editMode) {
@@ -186,6 +198,14 @@ export default class Page extends Component {
             </div>
           }
         </div>
+
+        {!this.state.editMode &&
+          <a className="vote" onClick={this.upVote}><span role="img" aria-label="">👍 helpful</span> <b>{this.props.votes && this.props.votes['upvotes'] ? Object.keys(this.props.votes['upvotes']).length : "0"}</b></a>
+        }
+        {!this.state.editMode &&
+          <a className="vote" onClick={this.hardVote}><span role="img" aria-label="">🤔 hard to understand</span> <b>{this.props.votes && this.props.votes['hard'] ? Object.keys(this.props.votes['hard']).length : "0"}</b></a>
+        }
+
       </div>
     );
   }
@@ -197,6 +217,7 @@ Page.propTypes = {
   onUnsavedChanges: PropTypes.func,
   onChangesSaved: PropTypes.func,
   canEdit: PropTypes.bool,
+  onVote: PropTypes.func,
   currentlyViewing: PropTypes.array,
   lastChangeTimestamp: PropTypes.number,
   lastChangeAutor: PropTypes.string,
