@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "date-fns": "^1.28.5",
-    "firebase": "^4.6.2",
+    "firebase": "^7.2.0",
     "flowchart.js": "^1.7.0",
     "highcharts": "^5.0.14",
     "highlight.js": "^9.12.0",
