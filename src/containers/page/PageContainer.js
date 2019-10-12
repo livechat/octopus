@@ -11,6 +11,7 @@ export default class PageContainer extends Component {
     currentlyViewing: [],
     fetched: false,
     body: '',
+    votes: {},
   };
 
   getCurrentPath() {
@@ -60,6 +61,7 @@ export default class PageContainer extends Component {
           e404: false,
           body: data.body,
           lastChangeTimestamp: data.lastChangeTimestamp,
+          votes: data.votes,
           lastChangeAutor: data.lastChangeAutor
         });
       } else if (this.getCurrentPath() === 'index') {
@@ -86,6 +88,36 @@ export default class PageContainer extends Component {
     firebase.database().ref('pages/index').set({
       body: indexPageTemplate
     });
+  }
+
+  onVote = (voteType) => {
+      let votes = this.state.votes;
+      if(votes && votes[voteType] && votes[voteType][Firebase.getUser().uid]) {
+          firebase.database().ref(`pages/${this.getCurrentPath()}/votes/${voteType}/${Firebase.getUser().uid}`).remove();
+
+          delete votes[voteType][Firebase.getUser().uid];
+
+          this.setState({
+              votes: votes,
+          });
+      } else {
+          if(!votes) {
+              votes = {}
+          }
+          if(!votes[voteType]) {
+              votes[voteType] = {}
+          }
+          votes[voteType][Firebase.getUser().uid] = {
+              timestamp: Utils.getTimestamp(),
+              user: Firebase.getUser().email
+          }
+          firebase.database().ref(`pages/${this.getCurrentPath()}`).update({
+              votes: votes
+          });
+          this.setState({
+              votes: votes,
+          });
+      }
   }
 
   onChangesSaved = (newBody) => {
@@ -143,8 +175,10 @@ export default class PageContainer extends Component {
         lastChangeTimestamp={this.state.lastChangeTimestamp}
         lastChangeAutor={this.state.lastChangeAutor}
         body={this.state.body}
+        votes={this.state.votes}
         onEditModeChange={this.props.onEditModeChange}
         onChangesSaved={this.onChangesSaved}
+        onVote={this.onVote}
         onUnsavedChanges={this.props.onUnsavedChanges}
         hash={this.props.hash}
       />;

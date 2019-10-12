@@ -27,9 +27,9 @@ export default class Page extends Component {
   componentDidMount() {
     this.setEditMode(false);
     this.setState({
-      body: this.props.body,
-      originalBody: this.props.body,
-      hasUnsavedChanges: false
+        body: this.props.body,
+        originalBody: this.props.body,
+        hasUnsavedChanges: false,
     });
   }
 
@@ -124,6 +124,18 @@ export default class Page extends Component {
     }
   }
 
+  upVote = (e) => {
+      if (this.props.onVote) {
+          this.props.onVote("upvotes");
+      }
+  }
+
+  hardVote = (e) => {
+      if (this.props.onVote) {
+          this.props.onVote("hard");
+      }
+  }
+
   cancelChanges = (e) => {
     e.preventDefault();
 
@@ -186,6 +198,14 @@ export default class Page extends Component {
             </div>
           }
         </div>
+
+          {!this.state.editMode &&
+            <a className="vote" onClick={this.upVote}><span role="img" aria-label="">👍 helpful</span> <b>{this.props.votes && this.props.votes['upvotes'] ? Object.keys(this.props.votes['upvotes']).length : "0"}</b></a>
+          }
+          {!this.state.editMode &&
+          <a className="vote" onClick={this.hardVote}><span role="img" aria-label="">🤔 hard to understand</span> <b>{this.props.votes && this.props.votes['hard'] ? Object.keys(this.props.votes['hard']).length : "0"}</b></a>
+          }
+
       </div>
     );
   }
@@ -196,6 +216,7 @@ Page.propTypes = {
   onEditModeChange: PropTypes.func,
   onUnsavedChanges: PropTypes.func,
   onChangesSaved: PropTypes.func,
+  onVote: PropTypes.func,
   canEdit: PropTypes.bool,
   currentlyViewing: PropTypes.array,
   lastChangeTimestamp: PropTypes.number,
