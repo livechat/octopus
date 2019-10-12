@@ -264,13 +264,13 @@ class App extends Component {
     return (
       <div className={wrapperClass.join(' ')}>
         <div className="app__menu">
-          <p className="app__menu__options">
-            <a href="" onClick={() => { firebase.auth().signOut(); return false; }}>Sign out</a> | <NavLink to="/menu">Edit menu</NavLink><br /><br />
-            <NavLink to="/online">Show people online</NavLink>
-          </p>
-          <div className="app__logo">
-            <NavLink to="/"><img className="octopus" src="/static/octopus.png" alt="" /></NavLink>
-          </div>
+            <div className="app__logo">
+                <NavLink to="/"><img className="octopus" src="/static/octopus.png" alt="" /></NavLink>
+            </div>
+            <p className="app__menu__options">
+                <a href="" onClick={() => { firebase.auth().signOut(); return false; }}>Sign out</a> | <NavLink to="/menu">Edit menu</NavLink> | <NavLink to="/online">People online</NavLink>
+            </p>
+
 
           {!this.state.menu &&
             <div className="spinner-container">
@@ -289,7 +289,7 @@ class App extends Component {
 
           <div className="app__menu--made-by">
             <p>Made by <a href="https://www.livechatinc.com/?utm_source=octopus&utm_medium=menu" target="_blank" rel="noopener noreferrer"><img className="octopus" src="/static/livechat.png" alt="" /></a></p>
-            <p>See <a href="https://github.com/livechat/octopus" target="_blank" rel="noopener noreferrer">Octopus on GitHub</a></p>
+            <p>See <a href="https://github.com/timecamp/company-wiki-octopus" target="_blank" rel="noopener noreferrer">Octopus on GitHub</a></p>
           </div>
         </div>
 
