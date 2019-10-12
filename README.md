@@ -152,6 +152,7 @@ We wanted it to be easy to contribute for **non-technical people** and include e
 * [Firebase](https://firebase.google.com/)
 
 ## Changelog
+* 12.10.2019 - Upvoting an article
 * 15.09.2017 - "Open as .png" option
 * 13.09.2017 - Initial release
 
