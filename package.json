@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "date-fns": "^1.28.5",
-    "firebase": "^4.3.0",
+    "firebase": "^4.6.2",
     "flowchart.js": "^1.7.0",
     "highcharts": "^5.0.14",
     "highlight.js": "^9.12.0",
@@ -13,6 +13,7 @@
     "raphael": "^2.2.7",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-native": "^0.61.2",
     "react-router-dom": "^4.1.2",
     "remarkable": "^1.7.1",
     "viz.js": "^1.8.0"
