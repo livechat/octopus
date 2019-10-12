@@ -158,5 +158,8 @@ We wanted it to be easy to contribute for **non-technical people** and include e
 ## Authors
 [Bartosz Olchówka](https://twitter.com/bolchowka/) / CTO @ [LiveChat](https://www.livechatinc.com/)
 
+## Contributors
+[Kamil Rudnicki](https://twitter.com/krudnicki/) / [TimeCamp](https://www.timecamp.com/)
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
