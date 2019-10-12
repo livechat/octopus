@@ -146,6 +146,12 @@ export default class Page extends Component {
       }
   }
 
+  readVote = (e) => {
+      if (this.props.onVote) {
+          this.props.onVote("read");
+      }
+  }
+
   render() {
     const contentClass = ['content', 'content--page'];
     if (this.state.editMode) {
@@ -204,6 +210,9 @@ export default class Page extends Component {
         }
         {!this.state.editMode &&
           <a className="vote" onClick={this.hardVote}><span role="img" aria-label="">🤔 hard to understand</span> <b>{this.props.votes && this.props.votes['hard'] ? Object.keys(this.props.votes['hard']).length : "0"}</b></a>
+        }
+        {!this.state.editMode &&
+        <a className="vote" onClick={this.readVote}><span role="img" aria-label="">✅ read</span> <b>{this.props.votes && this.props.votes['read'] ? Object.keys(this.props.votes['read']).length : "0"}</b></a>
         }
 
       </div>

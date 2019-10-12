@@ -100,6 +100,16 @@ export default class PageContainer extends Component {
     this.setState({
       body: newBody
     });
+
+    //mark as unread
+    let votes = this.state.votes;
+    if(votes && votes["read"]) {
+      firebase.database().ref(`pages/${this.getCurrentPath()}/votes/read`).remove();
+      delete votes["read"];
+      this.setState({
+        votes: votes,
+      });
+    }
   }
 
   createPage = () => {
