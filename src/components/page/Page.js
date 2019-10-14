@@ -212,16 +212,16 @@ export default class Page extends Component {
         </div>
 
         {!this.state.editMode &&
-        <a className="vote" onClick={this.upVote}><span role="img" aria-label="">👍 helpful</span> <b>{this.props.votes && this.props.votes['upvotes'] ? Object.keys(this.props.votes['upvotes']).length : "0"}</b></a>
+        <a className="vote" onClick={this.upVote}><span role="img" aria-label="">👍 it helped</span> <b>{this.props.votes && this.props.votes['upvotes'] ? Object.keys(this.props.votes['upvotes']).length : "0"}</b></a>
         }
         {!this.state.editMode &&
-        <a className="vote" onClick={this.hardVote}><span role="img" aria-label="">🤔 hard to understand</span> <b>{this.props.votes && this.props.votes['hard'] ? Object.keys(this.props.votes['hard']).length : "0"}</b></a>
+        <a className="vote" onClick={this.hardVote}><span role="img" aria-label="">🤔 not clear</span> <b>{this.props.votes && this.props.votes['hard'] ? Object.keys(this.props.votes['hard']).length : "0"}</b></a>
         }
         {!this.state.editMode &&
         <a className="vote" onClick={this.readVote}><span role="img" aria-label="">✅ read</span> <b>{this.props.votes && this.props.votes['read'] ? Object.keys(this.props.votes['read']).length : "0"}</b></a>
         }
         {!this.state.editMode &&
-        <a className="vote" onClick={this.obsoleteVote}><span role="img" aria-label="">🗑 obsolete</span> <b>{this.props.votes && this.props.votes['obsolete'] ? Object.keys(this.props.votes['obsolete']).length : "0"}</b></a>
+        <a className="vote" onClick={this.obsoleteVote}><span role="img" aria-label="">🗑 needs update</span> <b>{this.props.votes && this.props.votes['obsolete'] ? Object.keys(this.props.votes['obsolete']).length : "0"}</b></a>
         }
 
       </div>
