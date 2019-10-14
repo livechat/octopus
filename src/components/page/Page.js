@@ -135,21 +135,27 @@ export default class Page extends Component {
   }
 
   upVote = (e) => {
-      if (this.props.onVote) {
-          this.props.onVote("upvotes");
-      }
+    if (this.props.onVote) {
+      this.props.onVote("upvotes");
+    }
   }
 
   hardVote = (e) => {
-      if (this.props.onVote) {
-          this.props.onVote("hard");
-      }
+    if (this.props.onVote) {
+      this.props.onVote("hard");
+    }
   }
 
   readVote = (e) => {
-      if (this.props.onVote) {
-          this.props.onVote("read");
-      }
+    if (this.props.onVote) {
+      this.props.onVote("read");
+    }
+  }
+
+  obsoleteVote = (e) => {
+    if (this.props.onVote) {
+      this.props.onVote("read");
+    }
   }
 
   render() {
@@ -170,22 +176,22 @@ export default class Page extends Component {
       <div className={contentClass.join(' ')}>
         <div className="content__meta">
           {this.props.canEdit &&
-            <p>{meta.reduce((acc, x) => acc === null ? [x] : [acc, ' | ', x], null)}</p>
+          <p>{meta.reduce((acc, x) => acc === null ? [x] : [acc, ' | ', x], null)}</p>
           }
           {this.props.currentlyViewing.length > 0 &&
-            <p className="content__meta__currently-viewing">
-              Reading now: {this.props.currentlyViewing.map(user => <Person data={user} key={user.email} />)}
-            </p>
+          <p className="content__meta__currently-viewing">
+            Reading now: {this.props.currentlyViewing.map(user => <Person data={user} key={user.email} />)}
+          </p>
           }
         </div>
 
         <div className="content__body">
           <Markdown className="content__markdown content--markdown">
-          {this.state.body}
+            {this.state.body}
           </Markdown>
 
           {this.state.editMode &&
-            <div className="content__editor">
+          <div className="content__editor">
               <textarea
                 className="content__editor__textarea"
                 defaultValue={this.state.body}
@@ -193,26 +199,29 @@ export default class Page extends Component {
                 onChange={this.handleBodyChange}
                 ref={(ref) => ref && ref.focus()}
               />
-              <p className="content__editor__buttons">
-                <button onClick={this.saveChanges}>Save changes</button> or <a href="" className="content__editor__buttons__cancel" onClick={this.cancelChanges}>cancel</a>
-                <span className="content__editor__buttons__guide">
+            <p className="content__editor__buttons">
+              <button onClick={this.saveChanges}>Save changes</button> or <a href="" className="content__editor__buttons__cancel" onClick={this.cancelChanges}>cancel</a>
+              <span className="content__editor__buttons__guide">
                   <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener noreferrer">Formatting help</a>
                   <span> | </span>
                   <a href="/diagrams-help" target="_blank" rel="noopener noreferrer">Diagrams help</a>
                 </span>
-              </p>
-            </div>
+            </p>
+          </div>
           }
         </div>
 
         {!this.state.editMode &&
-          <a className="vote" onClick={this.upVote}><span role="img" aria-label="">👍 helpful</span> <b>{this.props.votes && this.props.votes['upvotes'] ? Object.keys(this.props.votes['upvotes']).length : "0"}</b></a>
+        <a className="vote" onClick={this.upVote}><span role="img" aria-label="">👍 helpful</span> <b>{this.props.votes && this.props.votes['upvotes'] ? Object.keys(this.props.votes['upvotes']).length : "0"}</b></a>
         }
         {!this.state.editMode &&
-          <a className="vote" onClick={this.hardVote}><span role="img" aria-label="">🤔 hard to understand</span> <b>{this.props.votes && this.props.votes['hard'] ? Object.keys(this.props.votes['hard']).length : "0"}</b></a>
+        <a className="vote" onClick={this.hardVote}><span role="img" aria-label="">🤔 hard to understand</span> <b>{this.props.votes && this.props.votes['hard'] ? Object.keys(this.props.votes['hard']).length : "0"}</b></a>
         }
         {!this.state.editMode &&
         <a className="vote" onClick={this.readVote}><span role="img" aria-label="">✅ read</span> <b>{this.props.votes && this.props.votes['read'] ? Object.keys(this.props.votes['read']).length : "0"}</b></a>
+        }
+        {!this.state.editMode &&
+        <a className="vote" onClick={this.obsoleteVote}><span role="img" aria-label="">🗑 obsolete</span> <b>{this.props.votes && this.props.votes['obsolete'] ? Object.keys(this.props.votes['obsolete']).length : "0"}</b></a>
         }
 
       </div>
