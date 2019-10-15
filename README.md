@@ -152,11 +152,15 @@ We wanted it to be easy to contribute for **non-technical people** and include e
 * [Firebase](https://firebase.google.com/)
 
 ## Changelog
+* 12.10.2019 - Upvoting an article
 * 15.09.2017 - "Open as .png" option
 * 13.09.2017 - Initial release
 
 ## Authors
 [Bartosz Olchówka](https://twitter.com/bolchowka/) / CTO @ [LiveChat](https://www.livechatinc.com/)
+
+## Contributors
+[Kamil Rudnicki](https://twitter.com/krudnicki/) / [TimeCamp](https://www.timecamp.com/)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details

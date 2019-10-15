@@ -63,3 +63,20 @@
 .content__editor__buttons__guide {
   float: right;
 }
+
+.vote {
+    display: inline-block;
+    border: 1px solid #c4c4c4;
+    border-radius: 2px;
+    padding: 7px 5px;
+    color: #666;
+    font-size: 0.8em;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.vote:hover {
+    background: #fff278;
+    color: #666;
+}
