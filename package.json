@@ -6,7 +6,7 @@
     "date-fns": "^1.28.5",
     "firebase": "^7.2.0",
     "flowchart.js": "^1.7.0",
-    "highcharts": "^5.0.14",
+    "highcharts": "^9.0.0",
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
